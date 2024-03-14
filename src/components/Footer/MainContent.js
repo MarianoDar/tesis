@@ -1,5 +1,5 @@
 import "./MainContent.css";
-import React from "react";
+import React, { useState } from 'react';
 
 const MainContent = () => {
   const redirectToInstagram = () => {
@@ -14,6 +14,18 @@ const MainContent = () => {
   const redirectToFacebook = () => {
     // Coloca la URL de tu página de Facebook
     window.location.href = 'https://www.facebook.com/';
+  };
+
+  const [contrasena, setContrasena] = useState('');
+
+  const handleConsultarClick = () => {
+    if (contrasena === 'estudio2024') {
+      // Redireccionar si la contraseña es correcta
+      window.location.href = '../pages/reseñas/Reseña.html';
+    } else {
+      // Mostrar un mensaje de error o realizar otras acciones en caso de contraseña incorrecta
+     alert('Contraseña incorrecta');
+    }
   };
   return (
     <section className="main-content" id="contacto">
@@ -49,48 +61,52 @@ const MainContent = () => {
         <div className="social-media-frame">
           <b className="social-media3">Redes Sociales</b>
           <div className="social-media-links">
-        <img
-          className="instagram-icon"
-          loading="eager"
-          alt=""
-          src="/instagram.svg"
-          onClick={redirectToInstagram}
-          style={{ cursor: 'pointer' }}
-        />
-        <img
-          className="twitter-icon"
-          loading="eager"
-          alt=""
-          src="/twitter.svg"
-          onClick={redirectToTwitter}
-          style={{ cursor: 'pointer' }}
-        />
-        <img
-          className="facebook-icon"
-          loading="eager"
-          alt=""
-          src="/facebook.svg"
-          onClick={redirectToFacebook}
-          style={{ cursor: 'pointer' }}
-        />
-      </div>
+            <img
+              className="instagram-icon"
+              loading="eager"
+              alt=""
+              src="/instagram.svg"
+              onClick={redirectToInstagram}
+              style={{ cursor: 'pointer' }}
+            />
+            <img
+              className="twitter-icon"
+              loading="eager"
+              alt=""
+              src="/twitter.svg"
+              onClick={redirectToTwitter}
+              style={{ cursor: 'pointer' }}
+            />
+            <img
+              className="facebook-icon"
+              loading="eager"
+              alt=""
+              src="/facebook.svg"
+              onClick={redirectToFacebook}
+              style={{ cursor: 'pointer' }}
+            />
+          </div>
         </div>
         <div className="newsletter-frame">
-          <b className="join-a-newsletter">Suscríbete</b>
+          <b className="join-a-newsletter">Consulta de reseñas</b>
           <div className="email-input-frame">
             <div className="your-email-label">
-              <div className="your-email4">Email</div>
-              <div className="form6">
-                <input
-                  className="enter-your-email1"
-                  placeholder="Ingrese su email"
-                  type="text"
-                />
+              <div>
+                <div className="your-email4">Ingrese la contraseña</div>
+                <div className="form6">
+                  <input
+                    className="enter-your-email1"
+                    placeholder="Contraseña"
+                    type="password" // Cambiado a tipo "password" para ocultar la contraseña
+                    value={contrasena}
+                    onChange={(e) => setContrasena(e.target.value)}
+                  />
+                </div>
+                <button className="button2" onClick={handleConsultarClick}>
+                  <b className="subscribe">Consultar</b>
+                </button>
               </div>
             </div>
-            <button className="button2">
-              <b className="subscribe">Subscribirse</b>
-            </button>
           </div>
         </div>
       </div>

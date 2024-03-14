@@ -10,6 +10,11 @@ const ContactUs = () => {
 
   const handleEnviar = async () => {
     try {
+      if (Mensaje.length > 300) {
+        alert('El mensaje no puede tener más de 300 caracteres');
+        return; // Detener la función si el mensaje es demasiado largo
+      }
+
       const response = await axios.post('http://localhost:3000/api/enviarmensaje', {
         Nombre,
         Apellido,
@@ -62,7 +67,7 @@ const ContactUs = () => {
             </div>
           </div>
           <div className="message-parent">
-            <div className="message">Mensaje</div>
+            <div className="message">Mensaje (máximo 300 caracteres)</div>
             <textarea
               className="form5"
               placeholder="Ingrese su mensaje"
